@@ -2,6 +2,7 @@ import decimal
 import pandas as pd
 from datetime import date
 from app.models import table_registry, Emissao
+from app.database import engine
 
 table_registry.metadata.create_all(engine)
 
