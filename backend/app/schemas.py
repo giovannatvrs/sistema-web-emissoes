@@ -10,3 +10,6 @@ class EmissaoSchema(BaseModel):
     emissor: str
     valor: decimal.Decimal
     link: str
+
+class EmissaoList(BaseModel):
+    emissoes: List[EmissaoSchema]
