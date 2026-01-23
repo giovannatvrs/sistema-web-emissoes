@@ -38,8 +38,6 @@ def listar_emissoes(skip: int = 0, limit: int = 30, db: Session = Depends(get_db
     return  {
         "emissoes": emissoes,
         "total": total_emissoes,
-        "skip": skip,
-        "limit": limit,
     }
 
 @app.get("/emissoes/{id}", response_model= EmissaoListResponse)

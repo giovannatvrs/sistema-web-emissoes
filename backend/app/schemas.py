@@ -32,5 +32,3 @@ class EmissaoPublic(BaseModel):
 class EmissaoListResponse(BaseModel):
     emissoes: List[EmissaoResponse]
     total: int
-    skip: int
-    limit: int

@@ -9,14 +9,21 @@
         </tr>
     </thead>
     <tbody>
-        @for(item of emissaoList; track $index){
+        @for(item of emissoes; track $index){
             <tr>
                 <td>{{item.data}}</td>
                 <td>{{item.tipo}}</td>
                 <td>{{item.emissor}}</td>
                 <td>{{item.valor}}</td>
-                <td><a [href]="item.link">{{item.link}}</a></td>
+                <td><a [href]="item.link" target="_blank">{{item.link}}</a></td>
             </tr>
         }
     </tbody>
 </table>
+<mat-paginator 
+[length]="total_emissoes" 
+[pageSize]="pageSize" 
+[pageSizeOptions]="[10, 20,30,50,100]" (page)="mostrarEmissoes($event)">
+
+</mat-paginator>
+
