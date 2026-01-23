@@ -1,13 +1,26 @@
 from fastapi import FastAPI, HTTPException, status, Path, Depends
+from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app.models import Emissao
-from app.schemas import EmissaoResponse, EmissaoPublic, EmissaoUpdate
+from app.schemas import EmissaoResponse, EmissaoPublic, EmissaoUpdate, EmissaoListResponse
 from typing import List
 
 
 app = FastAPI()
 
+origins = [
+    "http://localhost:4200"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def get_db():
     db = SessionLocal()
@@ -16,12 +29,20 @@ def get_db():
     finally:
         db.close()
 
-@app.get("/emissoes", response_model= List[EmissaoResponse])
-def listar_emissoes(skip: int = 0, limit: int = 20, db: Session = Depends(get_db)):
+@app.get("/emissoes", response_model= EmissaoListResponse)
+def listar_emissoes(skip: int = 0, limit: int = 30, db: Session = Depends(get_db)):
     emissoes = db.query(Emissao).offset(skip).limit(limit).all()
-    return  emissoes
 
-@app.get("/emissoes/{id}", response_model= EmissaoResponse)
+    total_emissoes = db.query(func.count(Emissao.id)).scalar()
+
+    return  {
+        "emissoes": emissoes,
+        "total": total_emissoes,
+        "skip": skip,
+        "limit": limit,
+    }
+
+@app.get("/emissoes/{id}", response_model= EmissaoListResponse)
 def obter_emissao(id: int, db: Session = Depends(get_db)):
     emissao = db.query(Emissao).filter(Emissao.id == id).first()
     if not emissao:

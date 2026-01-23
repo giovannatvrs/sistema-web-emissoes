@@ -1,7 +1,9 @@
 import decimal
 from datetime import date
 from pydantic import BaseModel, ConfigDict
-from typing import Optional
+from typing import Optional, List
+
+
 
 class EmissaoUpdate(BaseModel):
     data: Optional[date] = None
@@ -26,3 +28,9 @@ class EmissaoPublic(BaseModel):
     valor: decimal.Decimal
     link: str
     model_config = ConfigDict(from_attributes=True)
+
+class EmissaoListResponse(BaseModel):
+    emissoes: List[EmissaoResponse]
+    total: int
+    skip: int
+    limit: int

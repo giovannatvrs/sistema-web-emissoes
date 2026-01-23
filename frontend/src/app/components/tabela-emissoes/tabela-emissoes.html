@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Tipo</th>
+            <th>Emissor</th>
+            <th>Valor</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for(item of emissaoList; track $index){
+            <tr>
+                <td>{{item.data}}</td>
+                <td>{{item.tipo}}</td>
+                <td>{{item.emissor}}</td>
+                <td>{{item.valor}}</td>
+                <td><a [href]="item.link">{{item.link}}</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
