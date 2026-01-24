@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app.models import Emissao
 from app.schemas import EmissaoResponse, EmissaoPublic, EmissaoUpdate, EmissaoListResponse
-from typing import List
+from typing import List, Optional
+from datetime import date
 
 
 app = FastAPI()
@@ -30,20 +31,51 @@ def get_db():
         db.close()
 
 @app.get("/emissoes", response_model= EmissaoListResponse)
-def listar_emissoes(skip: int = 0, limit: int = 30, sort_by: str | None = None, order: str = "asc", db: Session = Depends(get_db)):
+def listar_emissoes(skip: int = 0,
+                    limit: int = 30,
+                    sort_by: str = "id",
+                    order: str = "asc",
+                    emissor: Optional[str] = None,
+                    tipo: Optional[str] = None,
+                    min_value: Optional[float] = None,
+                    max_value: Optional[float] = None,
+                    inicial_date: Optional[date] = None,
+                    final_date: Optional[date] = None,
+                    db: Session = Depends(get_db)):
     colunas = ["id", "data", "tipo", "emissor", "valor"];
+
+    query = db.query(Emissao)
+
+    if inicial_date is not None:
+        query = query.filter(Emissao.data >= inicial_date)
+
+    if final_date is not None:
+        query = query.filter(Emissao.data <= final_date)
+
+    if tipo:
+        query = query.filter(Emissao.tipo.ilike(f"%{tipo}%"))
+
+    if emissor:
+        query = query.filter(Emissao.emissor.ilike(f"%{emissor}%"))
+
+    if min_value is not None:
+        query = query.filter(Emissao.valor >= min_value)
+
+    if max_value is not None:
+        query = query.filter(Emissao.valor <= max_value)
+
 
     if sort_by not in colunas:
         raise HTTPException(status_code=400, detail="Coluna inválida")
 
     coluna = getattr(Emissao, sort_by)
-    ordem = asc if order == 'asc' else 'desc'
+    ordem = asc if order == 'asc' else desc
 
 
+    total_emissoes = query.count()
 
-    emissoes = db.query(Emissao).order_by(ordem(coluna)).offset(skip).limit(limit).all()
+    emissoes = query.order_by(ordem(coluna)).offset(skip).limit(limit).all()
 
-    total_emissoes = db.query(func.count(Emissao.id)).scalar()
 
     return  {
         "emissoes": emissoes,

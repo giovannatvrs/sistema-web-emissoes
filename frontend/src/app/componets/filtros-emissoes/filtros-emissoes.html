@@ -1,0 +1,29 @@
+<div>
+    <form>
+        <mat-form-field>
+            <mat-label>Data inicial</mat-label>
+            <input matInput [matDatepicker]="start" [(ngModel)]="filtros.inicial_date" name="inicial_date">
+            <mat-datepicker-toggle matIconSuffix [for]="start"></mat-datepicker-toggle>
+            <mat-datepicker #start></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Data final</mat-label>
+            <input matInput [matDatepicker]="end" [(ngModel)]="filtros.final_date" name="final_date">
+            <mat-datepicker-toggle matIconSuffix [for]="end"></mat-datepicker-toggle>
+            <mat-datepicker #end></mat-datepicker>
+        </mat-form-field>
+
+        <input type="text" [(ngModel)]="filtros.emissor" placeholder="Filtrar emissor" name="emissor">
+
+        <input type="text" [(ngModel)]="filtros.tipo" placeholder="Tipo (ex: CDB)" name="tipo">
+
+        <input type="number" [(ngModel)]="filtros.min_value" placeholder="Valor Mín." name="min_value">
+        <input type="number" [(ngModel)]="filtros.max_value" placeholder="Valor Máx." name="max_value">
+
+    </form>
+    <div>
+        <button (click)="filtrarCampos()">Filtrar</button>
+        <button (click)="limparFiltros()">Limpar</button>
+    </div>
+</div>
