@@ -1,10 +1,13 @@
+@if(mostrarBotao){
+    <button (click)="resetarOrdenacao()">Resetar ordenação</button>
+}
 <table>
     <thead>
         <tr>
-            <th>Data</th>
-            <th>Tipo</th>
-            <th>Emissor</th>
-            <th>Valor</th>
+            <th (click)="ordernar('data')">Data</th>
+            <th (click)="ordernar('tipo')">Tipo</th>
+            <th (click)="ordernar('emissor')">Emissor</th>
+            <th (click)="ordernar('valor')">Valor</th>
             <th>Link</th>
         </tr>
     </thead>

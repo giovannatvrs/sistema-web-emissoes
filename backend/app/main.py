@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, status, Path, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy import func
+from sqlalchemy import func, asc, desc
 from sqlalchemy.orm import Session
 from app.database import SessionLocal
 from app.models import Emissao
@@ -30,8 +30,18 @@ def get_db():
         db.close()
 
 @app.get("/emissoes", response_model= EmissaoListResponse)
-def listar_emissoes(skip: int = 0, limit: int = 30, db: Session = Depends(get_db)):
-    emissoes = db.query(Emissao).offset(skip).limit(limit).all()
+def listar_emissoes(skip: int = 0, limit: int = 30, sort_by: str | None = None, order: str = "asc", db: Session = Depends(get_db)):
+    colunas = ["id", "data", "tipo", "emissor", "valor"];
+
+    if sort_by not in colunas:
+        raise HTTPException(status_code=400, detail="Coluna inválida")
+
+    coluna = getattr(Emissao, sort_by)
+    ordem = asc if order == 'asc' else 'desc'
+
+
+
+    emissoes = db.query(Emissao).order_by(ordem(coluna)).offset(skip).limit(limit).all()
 
     total_emissoes = db.query(func.count(Emissao.id)).scalar()
 

@@ -1,0 +1,3 @@
+th:not(:last-child){
+    cursor: pointer;
+}
