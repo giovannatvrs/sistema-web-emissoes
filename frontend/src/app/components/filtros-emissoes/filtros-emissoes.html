@@ -1,0 +1,21 @@
+<div>
+    <form>
+        <label>Data Inicial</label>
+        <input type="date" [(ngModel)]="filtros.inicial_date" name="inicial_date">
+
+        <label>Data Final</label>
+        <input type="date" [(ngModel)]="filtros.final_date" name="final_date">
+
+        <input type="text" [(ngModel)]="filtros.emissor" placeholder="Filtrar emissor" name="emissor">
+
+        <input type="text" [(ngModel)]="filtros.tipo" placeholder="Tipo (ex: CRI)" name="tipo">
+
+        <input type="number" [(ngModel)]="filtros.min_value" placeholder="Valor Mín." name="min_value">
+        <input type="number" [(ngModel)]="filtros.max_value" placeholder="Valor Máx." name="max_value">
+
+    </form>
+    <div>
+        <button (click)="filtrarCampos()">Filtrar</button>
+        <button (click)="limparFiltros()">Limpar</button>
+    </div>
+</div>

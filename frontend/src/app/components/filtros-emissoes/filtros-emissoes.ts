@@ -1,15 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Filtros } from '../../models/filtros';
 import { FormsModule } from '@angular/forms';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { provideNativeDateAdapter } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-filtros-emissoes',
-  imports: [MatDatepickerModule, FormsModule, MatFormFieldModule, MatInputModule],
-  providers: [provideNativeDateAdapter()],
+  imports: [FormsModule],
   templateUrl: './filtros-emissoes.html',
   styleUrl: './filtros-emissoes.css',
 })

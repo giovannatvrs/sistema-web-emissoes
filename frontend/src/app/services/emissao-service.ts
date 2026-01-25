@@ -40,5 +40,9 @@ export class EmissaoService {
     return this.http.get<EmissaoResponse>(this.url, {params})
   }
   
+  editarEmissao(id: number, emissao: any): Observable<any>{
+    return this.http.put(`${this.url}/${id}`, emissao)
+  }
+  
 
 }

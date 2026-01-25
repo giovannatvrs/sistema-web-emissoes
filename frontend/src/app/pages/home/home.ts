@@ -3,7 +3,7 @@ import { TabelaEmissoes } from '../../components/tabela-emissoes/tabela-emissoes
 import { Emissao } from '../../models/emissao';
 import { EmissaoService } from '../../services/emissao-service';
 import { PageEvent } from '@angular/material/paginator';
-import { FiltrosEmissoes } from '../../componets/filtros-emissoes/filtros-emissoes';
+import { FiltrosEmissoes } from '../../components/filtros-emissoes/filtros-emissoes';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({

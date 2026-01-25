@@ -1,4 +1,8 @@
-@if(ordenacao.coluna !== 'id' && ordenacao.ordem != 'asc'){
+@if(exibirModal){
+    <app-edit-modal [emissao]="emissaoSelecionada" (fechar)="exibirModal = false" (salvar) = "salvarEdicao($event)"></app-edit-modal>
+}
+
+@if(ordenacao.coluna !== 'id'){
     <button (click)="resetarOrdenacao()">Resetar ordenação</button>
 }
 <table>
@@ -9,19 +13,19 @@
             <th (click)="ordernar('emissor')">Emissor</th>
             <th (click)="ordernar('valor')">Valor</th>
             <th>Link</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
         @for(item of emissoes; track $index){
             <tr>
-                <td>{{item.data}}</td>
+                <td>{{item.data | date: 'dd/MM/yyyy'}}</td>
                 <td>{{item.tipo}}</td>
                 <td>{{item.emissor}}</td>
-                <td>{{item.valor}}</td>
+                <td>{{item.valor | currency: 'BRL'}}</td>
                 <td><a [href]="item.link" target="_blank">{{item.link}}</a></td>
+                <td><button (click)="mostrarModal(item)">Editar</button></td>
             </tr>
         }
     </tbody>
 </table>
-
-

@@ -1,0 +1,29 @@
+<div class="modal">
+    <div class="modal-content">
+        <span class="close" (click)="ocultar()">&times;</span>
+        <div class="form-content">
+            <form>
+                <label for="data">Data:</label>
+                <input type="date" [(ngModel)]="emissao.data" name="data">
+                <label for="tipo">Tipo:</label>
+                <input type="text" [(ngModel)]="emissao.tipo" name="tipo">
+                <label for="valor">Valor:</label>
+                <input type="number" [(ngModel)]="emissao.valor" name="valor">
+                <label for="emissor">Emissor:</label>
+                <input type="text" [(ngModel)]="emissao.emissor" name="emissor">
+                <label for="link">Link:</label>
+                <input type="text" [(ngModel)]="emissao.link" name="link">
+            </form><div class="botoes">
+                <button (click)="ocultar()">CANCELAR</button>
+                <button (click)="confirmarEdicaoEmissao()">EDITAR</button>
+            </div>
+
+        </div>
+        
+        
+        
+    </div>
+    
+</div>
+
+

@@ -1,6 +1,6 @@
 <app-filtros-emissoes (aplicarFiltros)="obterFiltros($event)"></app-filtros-emissoes>
 
-<app-tabela-emissoes [emissoes]="emissoes" [ordenacao]="ordenacao" (ordenar)="ordernar($event.coluna)"></app-tabela-emissoes>
+<app-tabela-emissoes [emissoes]="emissoes" [ordenacao]="ordenacao" (ordenar)="ordernar($event.coluna)" (atualizarDados)="mostrarEmissoes()"></app-tabela-emissoes>
 <mat-paginator 
     [length]="total_emissoes" 
     [pageSize]="pageSize" 
