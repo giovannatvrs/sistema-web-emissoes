@@ -8,23 +8,23 @@
 <table>
     <thead>
         <tr>
-            <th (click)="ordernar('data')">Data</th>
-            <th (click)="ordernar('tipo')">Tipo</th>
-            <th (click)="ordernar('emissor')">Emissor</th>
-            <th (click)="ordernar('valor')">Valor</th>
+            <th (click)="ordernar('data')">Data @if (ordenacao.coluna === 'data') {{{ ordenacao.ordem === 'asc' ? '↑' : '↓' }}}</th>
+            <th (click)="ordernar('tipo')">Tipo @if (ordenacao.coluna === 'tipo') {{{ ordenacao.ordem === 'asc' ? '↑' : '↓' }}}</th>
+            <th (click)="ordernar('emissor')">Emissor @if (ordenacao.coluna === 'emissor') {{{ ordenacao.ordem === 'asc' ? '↑' : '↓' }}}</th>
+            <th (click)="ordernar('valor')">Valor @if (ordenacao.coluna === 'data') {{{ ordenacao.ordem === 'asc' ? '↑' : '↓' }}}</th>
             <th>Link</th>
             <th>Ações</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody> 
         @for(item of emissoes; track $index){
             <tr>
                 <td>{{item.data | date: 'dd/MM/yyyy'}}</td>
-                <td>{{item.tipo}}</td>
+                <td class="centraliza">{{item.tipo}}</td>
                 <td>{{item.emissor}}</td>
-                <td>{{item.valor | currency: 'BRL'}}</td>
+                <td class="valor">{{item.valor | currency: 'BRL'}}</td>
                 <td><a [href]="item.link" target="_blank">{{item.link}}</a></td>
-                <td><button (click)="mostrarModal(item)">Editar</button></td>
+                <td class="centraliza"><button (click)="mostrarModal(item)" class="edit-button"><fa-icon [icon]="faPenToSquare"></fa-icon>Editar</button></td>
             </tr>
         }
     </tbody>

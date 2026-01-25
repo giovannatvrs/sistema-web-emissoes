@@ -3,13 +3,16 @@ import { Emissao } from '../../models/emissao';
 import { CommonModule } from '@angular/common';
 import { EditModal } from '../edit-modal/edit-modal';
 import { EmissaoService } from '../../services/emissao-service';
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @Component({
   selector: 'app-tabela-emissoes',
-  imports: [CommonModule, EditModal],
+  imports: [CommonModule, EditModal, FontAwesomeModule],
   templateUrl: './tabela-emissoes.html',
   styleUrl: './tabela-emissoes.css',
 })
 export class TabelaEmissoes {
+  faPenToSquare = faPenToSquare;
   private emissaoService = inject(EmissaoService);
   @Input() emissoes: Emissao[] = [];
   @Input() ordenacao: any = {coluna: 'id', ordem: 'asc'};

@@ -1,11 +1,16 @@
-<app-filtros-emissoes (aplicarFiltros)="obterFiltros($event)"></app-filtros-emissoes>
+    <main>
+         <h1>Emissões</h1>
+        <app-filtros-emissoes (aplicarFiltros)="obterFiltros($event)"></app-filtros-emissoes>
 
-<app-tabela-emissoes [emissoes]="emissoes" [ordenacao]="ordenacao" (ordenar)="ordernar($event.coluna)" (atualizarDados)="mostrarEmissoes()"></app-tabela-emissoes>
-<mat-paginator 
-    [length]="total_emissoes" 
-    [pageSize]="pageSize" 
-    [pageIndex]="pageIndex"
-    [pageSizeOptions]="[10, 20, 30, 50, 100]" 
-    (page)="mostrarEmissoes($event)"
-    aria-label="Selecionar página">
-</mat-paginator>
+        <app-tabela-emissoes [emissoes]="emissoes" [ordenacao]="ordenacao" (ordenar)="ordernar($event.coluna)" (atualizarDados)="mostrarEmissoes()"></app-tabela-emissoes>
+        <mat-paginator 
+            [length]="total_emissoes" 
+            [pageSize]="pageSize" 
+            [pageIndex]="pageIndex"
+            [pageSizeOptions]="[10, 20, 30, 50, 100]" 
+            (page)="mostrarEmissoes($event)"
+            aria-label="Selecionar página">
+        </mat-paginator>
+    </main>
+
+
