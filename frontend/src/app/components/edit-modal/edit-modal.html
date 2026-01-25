@@ -2,20 +2,22 @@
     <div class="modal-content">
         <span class="close" (click)="ocultar()">&times;</span>
         <div class="form-content">
+            <h3>Editar Oferta</h3>
+            <p>Altere os dados da oferta selecionada. As mudanças serão aplicadas imediatamente após salvar</p>
             <form>
-                <label for="data">Data:</label>
+                <label for="data">Data</label>
                 <input type="date" [(ngModel)]="emissao.data" name="data">
-                <label for="tipo">Tipo:</label>
+                <label for="tipo">Tipo</label>
                 <input type="text" [(ngModel)]="emissao.tipo" name="tipo">
-                <label for="valor">Valor:</label>
+                <label for="valor">Valor</label>
                 <input type="number" [(ngModel)]="emissao.valor" name="valor">
-                <label for="emissor">Emissor:</label>
+                <label for="emissor">Emissor</label>
                 <input type="text" [(ngModel)]="emissao.emissor" name="emissor">
-                <label for="link">Link:</label>
+                <label for="link">Link</label>
                 <input type="text" [(ngModel)]="emissao.link" name="link">
             </form><div class="botoes">
-                <button (click)="ocultar()">CANCELAR</button>
-                <button (click)="confirmarEdicaoEmissao()">EDITAR</button>
+                <button (click)="ocultar()" class="btn-cancelar">CANCELAR</button>
+                <button (click)="confirmarEdicaoEmissao()" class="btn-salvar">SALVAR</button>
             </div>
 
         </div>

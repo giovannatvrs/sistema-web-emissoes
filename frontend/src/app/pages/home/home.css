@@ -1,12 +1,55 @@
 main{
-    padding: 40px 30px;
-    
+    width: 100%;
+    height: 100vh;
+    display: flex;
 }
 
 h1{
     font-weight: 500;
     border-bottom: 1px solid #ced4da;
     padding-bottom: 5px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+}
+
+.side-bar{
+    width: 15%;
+    padding: 20px;
+    box-shadow: 10px 0 10px -5px rgba(30, 30, 30, 0.3);
+    background-color: rgb(2, 3, 129);
+    color: white;
+    height: 100vh;
+}
+
+
+.content{
+    width: 85%;
+    padding: 30px 40px;
+}
+
+.filtro-header{
+    width: 100px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.filtro-header h3 {
+  display: flex;
+  align-items: center; 
+  gap: 8px;            
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.filtro-header .icone {
+  font-size: 16px;     
+  margin-bottom: 2px;    
+}
+
+.filtro-header:hover{
+    background-color: #ced4da;
+}
+
+.filtro-wrapper {
+  position: relative;
 }
 

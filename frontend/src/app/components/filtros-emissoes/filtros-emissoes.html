@@ -1,21 +1,44 @@
-<div>
-    <form>
-        <label>Data Inicial</label>
-        <input type="date" [(ngModel)]="filtros.inicial_date" name="inicial_date">
+<div class="filtro-container" (click)="$event.stopPropagation()">
+  <form>
+    <div class="campo-container">
+        <div class="campo">
+            <label>Data Inicial</label>
+            <input type="date" [(ngModel)]="filtros.inicial_date" name="inicial_date">
+        </div>
 
-        <label>Data Final</label>
-        <input type="date" [(ngModel)]="filtros.final_date" name="final_date">
-
-        <input type="text" [(ngModel)]="filtros.emissor" placeholder="Filtrar emissor" name="emissor">
-
-        <input type="text" [(ngModel)]="filtros.tipo" placeholder="Tipo (ex: CRI)" name="tipo">
-
-        <input type="number" [(ngModel)]="filtros.min_value" placeholder="Valor Mín." name="min_value">
-        <input type="number" [(ngModel)]="filtros.max_value" placeholder="Valor Máx." name="max_value">
-
-    </form>
-    <div>
-        <button (click)="filtrarCampos()">Filtrar</button>
-        <button (click)="limparFiltros()">Limpar</button>
+        <div class="campo">
+            <label>Data Final</label>
+            <input type="date" [(ngModel)]="filtros.final_date" name="final_date">
+        </div>
     </div>
+    
+    <div class="campo">
+      <label>Emissor</label>
+      <input type="text" [(ngModel)]="filtros.emissor" placeholder="Filtrar emissor" name="emissor">
+    </div>
+
+    <div class="campo">
+      <label>Tipo</label>
+      <input type="text" [(ngModel)]="filtros.tipo" placeholder="Ex: CRI" name="tipo">
+    </div>
+    <div class="campo-container">
+        <div class="campo">
+            <label>Valor Mínimo</label>
+            <input type="number" [(ngModel)]="filtros.min_value" placeholder="0,00" name="min_value">
+        </div>
+
+        <div class="campo">
+            <label>Valor Máximo</label>
+            <input type="number" [(ngModel)]="filtros.max_value" placeholder="0,00" name="max_value">
+        </div>
+    </div>
+    
+  </form>
+
+  <div class="acoes">
+    <button class="btn-filtrar" (click)="filtrarCampos()" [disabled]="!temFiltroAtivo()">Filtrar</button>
+    @if(mostrarBotaoLimpar){
+        <button class="btn-limpar" (click)="limparFiltros()">Limpar</button>
+    }
+  </div>
 </div>

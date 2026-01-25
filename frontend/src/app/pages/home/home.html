@@ -1,16 +1,35 @@
-    <main>
-         <h1>Emissões</h1>
-        <app-filtros-emissoes (aplicarFiltros)="obterFiltros($event)"></app-filtros-emissoes>
+<main>
+  <div class="side-bar"></div>
 
-        <app-tabela-emissoes [emissoes]="emissoes" [ordenacao]="ordenacao" (ordenar)="ordernar($event.coluna)" (atualizarDados)="mostrarEmissoes()"></app-tabela-emissoes>
-        <mat-paginator 
-            [length]="total_emissoes" 
-            [pageSize]="pageSize" 
-            [pageIndex]="pageIndex"
-            [pageSizeOptions]="[10, 20, 30, 50, 100]" 
-            (page)="mostrarEmissoes($event)"
-            aria-label="Selecionar página">
-        </mat-paginator>
-    </main>
+  <div class="content">
+    <h1>Emissões</h1>
 
+    <div class="filtro-wrapper">
+      <div class="filtro-header" (click)="mostrar()">
+        <h3><span class="icone">▾</span>Filtros</h3>
+      </div>
+      <div [hidden]="!mostrarFiltros">
+        <app-filtros-emissoes
+          (aplicarFiltros)="obterFiltros($event)"
+          (resetarOrdenacao)="resetarOrdenacao()">
+        </app-filtros-emissoes>
+      </div>
+    </div>
 
+    <app-tabela-emissoes
+      [emissoes]="emissoes"
+      [ordenacao]="ordenacao"
+      (ordenar)="ordernar($event.coluna)"
+      (atualizarDados)="mostrarEmissoes()">
+    </app-tabela-emissoes>
+
+    <mat-paginator
+      [length]="total_emissoes"
+      [pageSize]="pageSize"
+      [pageIndex]="pageIndex"
+      [pageSizeOptions]="[10, 20, 30, 50, 100]"
+      (page)="mostrarEmissoes($event)"
+      aria-label="Selecionar página">
+    </mat-paginator>
+  </div>
+</main>

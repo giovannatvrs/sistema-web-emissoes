@@ -28,12 +28,13 @@ th{
     background-color: rgb(119, 242, 85);
     font-weight: 600;
     font-size: 16px;
-    
+    transition: all 0.3s ease;
 
 }
 
 th:hover{
-        background-color: rgb(59, 236, 10);
+    
+    background-color: rgb(59, 236, 10);
 
 }
 
@@ -53,11 +54,13 @@ td{
     cursor: pointer;
     width: 90px;
     border-radius: 3px;
-
+    transform: scale(1);
+    transition: transform 0.3s ease;
    
 }
 
 .edit-button:hover{
+    transform: scale(1.1);
     background-color: rgb(9, 9, 221);
 }
 

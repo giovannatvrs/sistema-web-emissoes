@@ -1,23 +1,17 @@
-.modal{
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top:0;
-    width:100%;
-    height:100%;
-    overflow: auto;
-    background-color: rgb(0,0,0,0.6);
-
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .modal-content {
- transform: translateY(-50%);
-  background-color: #fefefe;
-  margin: 15% auto; 
-  border: 1px solid #888;
+  background-color: #fff;
+  margin: 10vh auto;
   border-radius: 10px;
-  width: 40%; 
+  width: min(90%, 700px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .close {
@@ -29,6 +23,17 @@
   margin-right: 15px;
 }
 
+h3{
+    border-bottom: 1px solid #ced4da;
+    padding-bottom: 8px;
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+}
+
+p{
+    margin-top: 12px;
+    margin-bottom: 16px;
+    font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+}
 
 .close:hover,
 .close:focus {
@@ -48,9 +53,50 @@ form{
     flex-direction: column;
 }
 
+label {
+  font-size: clamp(0.75rem, 2vw, 0.85rem);   
+  margin-bottom: 4px;
+  color: #4b4b4b;
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  margin-bottom: 10px;
+}
+
 .botoes{
     display: flex;
     justify-content: flex-end;
     gap: 6px;
     margin-top: 20px;
+    gap: 10px;
+
+}
+
+button{
+    padding: 8px 16px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+}
+
+.btn-cancelar{
+    background-color: #e5e7eb;
+}
+.btn-cancelar:hover{
+    background-color: #cbcfd5;
+}
+.btn-salvar{
+    color: white;
+    background-color: rgb(2, 3, 129);
+}
+
+.btn-salvar:hover{
+    background-color: rgb(9, 9, 221);
 }

@@ -20,6 +20,12 @@ export class Home implements OnInit{
   ordenacao = {coluna: "id", ordem: "asc"}
   filtros: any = {};
 
+  mostrarFiltros = false;
+
+  mostrar(){
+    this.mostrarFiltros = !this.mostrarFiltros;
+  }
+
   constructor(private emissaoService:EmissaoService)
   {
 
