@@ -14,7 +14,8 @@ from datetime import date
 app = FastAPI()
 
 origins = [
-    "http://localhost:4200"
+    "http://localhost:4200",
+    "https://sistema-web-emissoes.onrender.com"
 ]
 
 app.add_middleware(
