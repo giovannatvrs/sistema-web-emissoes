@@ -15,7 +15,6 @@ app = FastAPI()
 
 origins = [
     "http://localhost:4200",
-    "https://sistema-web-emissoes.onrender.com",
     "https://sistema-web-emissoes-1.onrender.com"
 ]
 
