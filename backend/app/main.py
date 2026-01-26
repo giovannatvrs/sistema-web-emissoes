@@ -102,6 +102,8 @@ def editar_emissao(id: int, emissao: EmissaoUpdate, db: Session = Depends(get_db
         )
     dados_atualizados = emissao.model_dump(exclude_unset=True)
     for k, v in dados_atualizados.items():
+        if k == 'link' and v is not None:
+            v = str(v)
         setattr(db_emissao, k, v)
 
     db.commit()

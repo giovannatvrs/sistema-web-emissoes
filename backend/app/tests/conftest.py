@@ -30,7 +30,15 @@ def override_get_db():
     finally:
         db.close()
 
+
 app.dependency_overrides[get_db] = override_get_db
+
+
+@pytest.fixture(scope="function", autouse=True)
+def setup_database():
+    table_registry.metadata.create_all(bind=engine_test)
+    yield
+    table_registry.metadata.drop_all(bind=engine_test)
 
 @pytest.fixture(scope="function")
 def client():

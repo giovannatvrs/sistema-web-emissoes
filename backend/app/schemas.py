@@ -1,6 +1,6 @@
 import decimal
 from datetime import date
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, ValidationError, field_validator, HttpUrl
 from typing import Optional, List
 
 
@@ -10,7 +10,29 @@ class EmissaoUpdate(BaseModel):
     tipo: Optional[str] = None
     emissor: Optional[str] = None
     valor: Optional[decimal.Decimal] = None
-    link: Optional[str] = None
+    link: Optional[HttpUrl] = None
+
+    @field_validator('data')
+    def validate_data(cls, v):
+        if v is not None and v > date.today():
+            raise ValueError('Data invalida')
+        return v
+
+    @field_validator('tipo', 'emissor')
+    def validate_tipo(cls, v):
+        if not v.strip():
+            raise ValueError('Campo não pode ser vazio')
+        return v
+
+    @field_validator('valor')
+    def validate_valor(cls, v):
+        if v < decimal.Decimal(0):
+            raise ValueError('Valor invalido')
+        return v
+
+
+
+
 
 class EmissaoResponse(BaseModel):
     id: int
@@ -18,7 +40,7 @@ class EmissaoResponse(BaseModel):
     tipo: str
     emissor: str
     valor: decimal.Decimal
-    link: str
+    link: HttpUrl
     model_config = ConfigDict(from_attributes=True)
 
 class EmissaoPublic(BaseModel):
@@ -26,7 +48,7 @@ class EmissaoPublic(BaseModel):
     tipo: str
     emissor: str
     valor: decimal.Decimal
-    link: str
+    link: HttpUrl
     model_config = ConfigDict(from_attributes=True)
 
 class EmissaoListResponse(BaseModel):
