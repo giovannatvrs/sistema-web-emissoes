@@ -108,5 +108,5 @@ def editar_emissao(id: int, emissao: EmissaoUpdate, db: Session = Depends(get_db
     return db_emissao
 
 @app.get("/stats")
-def dashboard():
+def get_estatisticas():
     return
