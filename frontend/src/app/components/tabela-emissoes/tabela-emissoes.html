@@ -1,10 +1,13 @@
-@if(exibirModal){
+<div class="acoes-container">
+    @if(exibirModal){
     <app-edit-modal [emissao]="emissaoSelecionada" (fechar)="exibirModal = false" (salvar) = "salvarEdicao($event)"></app-edit-modal>
-}
+    }
 
-@if(ordenacao.coluna !== 'id'){
-    <button (click)="resetarOrdenacao()">Resetar ordenação</button>
-}
+    @if(ordenacao.coluna !== 'id'){
+        <button (click)="resetarOrdenacao()" class="btn-reset">Resetar ordenação</button>
+    }
+</div>
+
 <table>
     <thead>
         <tr>

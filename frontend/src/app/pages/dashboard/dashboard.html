@@ -1,1 +1,63 @@
-<p>dashboard works!</p>
+<div class="page-content">
+  <app-barra-lateral></app-barra-lateral>
+
+  <div class="dashboard-container">
+    <h1>Dashboard</h1>
+    @if (stats) {
+      <div class="cards-grid">
+        <div class="card shadow volume">
+          <p>Volume Total 2025</p>
+          <h2>{{ stats.volume_total | currency:'BRL' }}</h2>
+        </div>
+        <div class="card shadow medio">
+          <p>Ticket Médio</p>
+          <h2>{{ stats.volume_medio | currency:'BRL' }}</h2>
+        </div>
+        <div class="card shadow qtd">
+          <p>Total de Operações</p>
+          <h2>{{ stats.qtd_emissoes_por_ano[0].qtd_emissoes }}</h2>
+        </div>
+        <div class="card shadow tipo">
+          <p>Principal Ativo</p>
+          <h2>{{ stats.tipos_mais_relevantes_por_volume[0].tipo }}</h2>
+        </div>
+      </div>
+
+      <div class="charts-grid">
+        <div id="pizza_div" class="chart-box shadow"></div>
+        <div id="barra_div" class="chart-box shadow"></div>
+        <div id="qtd_div" class="chart-box shadow"></div>
+      </div>
+
+      <div class="tables-row">
+        <div class="table-container shadow">
+          <h3>Top 5 Emissores (Volume)</h3>
+          <table>
+            <tbody>
+              @for (e of stats.maiores_emissores_por_volume; track e.emissor) {
+                <tr>
+                  <td>{{ e.emissor }}</td>
+                  <td class="text-end"><strong>{{ e.valor_total | currency:'BRL' }}</strong></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-container shadow">
+          <h3>Top 5 Emissores (Quantidade)</h3>
+          <table>
+            <tbody>
+              @for (q of stats.maiores_emissores_por_qtd; track q.emissor) {
+                <tr>
+                  <td>{{ q.emissor }}</td>
+                  <td class="text-end"><strong>{{ q.qtd_emissoes }}</strong></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    }
+  </div>
+</div>

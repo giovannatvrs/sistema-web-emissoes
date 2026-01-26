@@ -5,19 +5,16 @@ import { EmissaoService } from '../../services/emissao-service';
 import { PageEvent } from '@angular/material/paginator';
 import { FiltrosEmissoes } from '../../components/filtros-emissoes/filtros-emissoes';
 import { MatPaginator } from '@angular/material/paginator';
-import { faChartLine } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterLink } from "@angular/router";
+import { BarraLateral } from '../../components/barra-lateral/barra-lateral';
 
 
 @Component({
   selector: 'app-home',
-  imports: [TabelaEmissoes, FiltrosEmissoes, MatPaginator, FontAwesomeModule, RouterLink],
+  imports: [TabelaEmissoes, FiltrosEmissoes, MatPaginator, BarraLateral],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements OnInit{
-  faChartLine = faChartLine;
   emissoes: Emissao[] = [];
   total_emissoes = 0;
   pageSize = 30;

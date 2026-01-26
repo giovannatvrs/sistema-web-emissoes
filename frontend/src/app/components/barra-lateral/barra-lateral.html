@@ -1,0 +1,9 @@
+<div class="side-bar">
+    @if(isDashboard()){
+         <span><a routerLink="/home"><fa-icon [icon]="faHome"></fa-icon> Home</a></span>
+    }
+    @else {
+        <span><a routerLink="/dashboard"><fa-icon [icon]="faChartLine"></fa-icon> Dashboard</a></span>
+    }
+
+</div>
