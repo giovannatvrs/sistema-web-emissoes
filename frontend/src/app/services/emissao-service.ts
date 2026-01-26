@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Emissao } from '../models/emissao';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environment/environment';
+
 
 export interface EmissaoResponse{
   emissoes: Emissao[],
@@ -13,7 +15,7 @@ export interface EmissaoResponse{
   providedIn: 'root',
 })
 export class EmissaoService {
-  private url = "http://127.0.0.1:8000/emissoes";
+  private url = `${environment.apiUrl}/emissoes`;
 
   constructor(private http: HttpClient)
   {

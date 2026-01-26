@@ -16,6 +16,8 @@ if arquivo_excel.exists():
     df = pd.read_excel(arquivo_excel)
 
     with Session(engine) as session:
+        session.query(Emissao).delete()
+        session.commit()
         for index, row in df.iterrows():
             valor_raw = str(row['Valor']).replace(',', '.') if pd.notnull(row['Valor']) else "0"
 
