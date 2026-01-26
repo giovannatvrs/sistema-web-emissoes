@@ -84,7 +84,7 @@ def listar_emissoes(skip: int = 0,
         "total": total_emissoes,
     }
 
-@app.get("/emissoes/{id}", response_model= EmissaoListResponse)
+@app.get("/emissoes/{id}", response_model= EmissaoResponse)
 def obter_emissao(id: int, db: Session = Depends(get_db)):
     emissao = db.query(Emissao).filter(Emissao.id == id).first()
     if not emissao:
@@ -130,8 +130,6 @@ def get_estatisticas(db: Session = Depends(get_db)):
 
 
     qtd_emissoes_por_tipo = db.query(Emissao.tipo, func.count(Emissao.id).label("qtd_emissoes")).group_by("tipo").order_by("tipo").all()
-
-    qtd_emissoes_por_emissor = db.query(Emissao.emissor, func.count(Emissao.id).label("qtd_emissoes")).group_by("emissor").order_by(func.count(Emissao.id).desc()).all()
 
     volume_medio = db.query(func.avg(Emissao.valor)).scalar()
 
