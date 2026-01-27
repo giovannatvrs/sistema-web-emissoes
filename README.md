@@ -29,7 +29,7 @@ git clone https://github.com/giovannatvrs/sistema-web-emissoes.git
 
 cd backend
 pip install -r requirements.txt
-python -m app.script.import_file  # Importação inicial dos dados
+python -m app.script.import_file 
 uvicorn app.main:app --reload
 
 cd frontend
@@ -45,6 +45,11 @@ npx ng serve
 
 ## Página Inicial
 <img width="1893" height="930" alt="image" src="https://github.com/user-attachments/assets/d4a5cb00-8b52-42d0-bdc5-58d9f6f39993" />
+
+<img width="1893" height="930" alt="image" src="https://github.com/user-attachments/assets/12d06477-7136-48c0-bc62-b3d3fe5736ea" />
+
+<img width="1893" height="930" alt="image" src="https://github.com/user-attachments/assets/5ff45456-79c5-4ce8-9aa2-14cf34b51492" />
+
 
 ## Dashboard
 <img width="1893" height="930" alt="image" src="https://github.com/user-attachments/assets/c4e5a123-b112-47b7-ae16-4bcc5b87cb67" />
