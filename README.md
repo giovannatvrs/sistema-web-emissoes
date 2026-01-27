@@ -1,6 +1,6 @@
 # Sistema Web de Emissões
 ## Link
-Link do Projeto Live: https://sistema-web-emissoes-1.onrender.com
+Link do Projeto Live: https://sistema-web-emissoes-1.onrender.com (Deploy no render)
 
 ## Descrição do Projeto
 Uma plataforma para gestão e análise de ofertas da planilha "Primário 2025". O sistema permite o gerenciamento completo (CRUD parcial) das emissões, oferecendo visualizações analíticas através de um dashboard interativo.
