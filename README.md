@@ -27,14 +27,20 @@ Eu escolhi o fastAPI pela sua performace, garantia de validação de dados e fac
 ## Rodar localmente
 git clone https://github.com/giovannatvrs/sistema-web-emissoes.git
 
-cd backend
-pip install -r requirements.txt
-python -m app.script.import_file 
-uvicorn app.main:app --reload
+cd backend  
 
-cd frontend
-npm install
-npx ng serve
+pip install -r requirements.txt  
+
+python -m app.script.import_file  
+
+uvicorn app.main:app --reload  
+
+cd frontend  
+
+npm install  
+
+npx ng serve  
+
 
 # Melhorias Futuras
 - Implementação de sistema de autenticação e login para acessar dados.
