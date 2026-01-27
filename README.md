@@ -27,6 +27,7 @@ Eu escolhi o fastAPI pela sua performace, garantia de validação de dados e fac
 ## Rodar localmente
 git clone https://github.com/giovannatvrs/sistema-web-emissoes.git
 
+No PyCharm ou outra IDE
 cd backend  
 
 ativar ambiente virtual
@@ -36,6 +37,8 @@ pip install -r requirements.txt
 python -m app.script.import_file  
 
 uvicorn app.main:app --reload  
+
+No vscode, por exemplo:
 
 cd frontend  
 
