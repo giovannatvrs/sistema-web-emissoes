@@ -29,6 +29,8 @@ git clone https://github.com/giovannatvrs/sistema-web-emissoes.git
 
 cd backend  
 
+ativar ambiente virtual
+
 pip install -r requirements.txt  
 
 python -m app.script.import_file  
